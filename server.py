@@ -23,7 +23,7 @@ html_content = """
     <script>
         const username = prompt("Enter your username: ") || "Anonymous";
         const room = prompt("Enter room name: ") || "General";
-        const ws = new WebSocket(`ws://127.0.0.1:8000/ws/${username}/${room}`);
+        const ws = new WebSocket(`wss://${window.location.host}/ws/${username}/${room}`);
         const messages = document.getElementById('messages');
         const messageInput = document.getElementById('messageInput');
         const sendButton = document.getElementById('sendButton');
@@ -111,7 +111,6 @@ def get_room_users(room: str) -> str:
     return "No users."
 
 
-if __name__ == "__main__":
-    import uvicorn
-
-    uvicorn.run(app, host="127.0.0.1", port=8080)
+# if __name__ == "__main__":
+#     import uvicorn
+#     uvicorn.run(app, host="127.0.0.1", port=8080)
