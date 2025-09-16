@@ -1,5 +1,6 @@
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 from fastapi.responses import HTMLResponse
+import os 
 
 html_content = """
 <!DOCTYPE html>
@@ -224,6 +225,7 @@ html_content = """
 """
 
 app = FastAPI()
+port = int(os.environ.get("PORT", 8000))
 
 chat_rooms: dict = {}
 
